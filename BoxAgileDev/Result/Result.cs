@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Runtime.Serialization;
 
 namespace BoxAgileDev.Result
 {
     [DataContract]
-    public class Result: IBaseResult
+    public class Result : IBaseResult
     {
         /// <summary>
-        /// Property for management the status transaction. Default is HttpStatus 500
+        /// Property for management the status transaction. Default is error code 500
         /// </summary>
         [DataMember(Name = "statusCode")]
         public HttpStatusCode StatusCode { get; private set; } = HttpStatusCode.InternalServerError;
@@ -38,7 +37,7 @@ namespace BoxAgileDev.Result
             }
 
             this.Messages.Add(message);
-        }
+        }       
 
         /// <summary>
         /// Method for set the status of the transaction
@@ -50,11 +49,19 @@ namespace BoxAgileDev.Result
         }
 
         /// <summary>
-        /// Set successful the transaction
+        /// Set successful the transaction and set status code to 200 (OK)
         /// </summary>
         public void Successful()
         {
             this.Success = true;
+            this.StatusCode = HttpStatusCode.OK;
+        }
+
+        public void SetError(string errorMessage, HttpStatusCode statusCode)
+        {
+            this.Success = false;
+            this.AddMessage(errorMessage);
+            this.StatusCode = statusCode;
         }
     }
 }

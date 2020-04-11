@@ -1,26 +1,30 @@
-﻿# Box Agile Dev (BAD)
+﻿# Box Agile Dev Core (BAD)
 
-> BAD is a toolbox for the agile development of .Net Web Api projects under the framework of a workflow.
+> BADCore is a toolbox for the agile development of .Net COre Web Api projects under the guide of a workflow.
 
 
 ## Environment
 
-> This library was made in C# .Net framework version 4.
+> This library was made in C# .Net Standard 2.0.
 
 ## Installation
 
-- Go to management Nuget Package in your project and searh BAD and install the last versión of `Vickodev.Utility.BAD`.
+- Go to management Nuget Package in your project and searh BAD and install the last versión of `Vickodev.Utility.BADCore`.
 - Ok, once installed, go to any Class in the project and declare the library for use it, using BoxAgileDev; and ready.
 
 ## Tools in package
 
-> `Result`: is a tool for Flow Process Control and return data of your application.
+> `Result`: is a tool for Flow Process Control and set the response data of your application.
+
+> `CommonResponse`: is a class for management the response througt HandlerResponse method into Controller.
 
 > `SimpleMapper`: is a simple tool for mapping object models with data models.
 
-> `HttpResponseManager`: is a tool for management the Api Controllers and Map Json objects in Object models (PostUtility) into your application.
+> `ControllerManager`: is a class based in ControllerBase for  for management the Api Controllers and Map Json objects in Object models (PostUtility) into your application.
 
-> `PostUtility`: is a Class into HttpResponseManager with which you can map objects in Json format to object models.
+> `JsonUtil`: is a Class into HttpResponseManager with which you can map objects in Json format to object models.
+
+> `CustomHttpCient`: is a class for manage a single instance of HttpClient class for manage your request.
 
 
 ## Example (it's in process)
@@ -30,7 +34,7 @@ using BoxAgileDev;
 
 namespace WebApiTest.Controllers
 {
-    public class UserController : HttpResponseManager<BMUser>
+    public class UserController : ApiManager<UserContract>
     {        
         public HttpResponseMessage Get(string email)
         {

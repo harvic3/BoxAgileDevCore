@@ -17,5 +17,7 @@ namespace BoxAgileDev.Result
 
         void Successful();
 
+        void SetError(string message, HttpStatusCode statusCode);
     }
+
 }
