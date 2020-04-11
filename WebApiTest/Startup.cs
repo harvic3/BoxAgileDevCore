@@ -28,6 +28,11 @@ namespace WebApiTest
             services.AddTransient<IWeatherQueryService, WeatherQueryService>();
             services.AddTransient<IWeatherRepository, WeatherRepository>();
 
+            /*
+              This is important for map the DataMember names into Dto.
+              You can add Nuget Microsoft.AspNetCore.Mvc.NewtonsoftJson and 
+              add extension mehod AddNewtonsoftJson();
+            */
             services.AddControllers()
                     .AddNewtonsoftJson();
         }

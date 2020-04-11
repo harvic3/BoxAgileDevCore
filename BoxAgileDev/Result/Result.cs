@@ -40,7 +40,7 @@ namespace BoxAgileDev.Result
         }       
 
         /// <summary>
-        /// Method for set the status of the transaction
+        /// Method for set the status for the current transaction
         /// </summary>
         /// <param name="statusCode">Http status code of transaction</param>
         public void SetStatusCode(HttpStatusCode statusCode)
@@ -57,6 +57,11 @@ namespace BoxAgileDev.Result
             this.StatusCode = HttpStatusCode.OK;
         }
 
+        /// <summary>
+        /// Method for set the error message and statusCode for the current transaction
+        /// </summary>
+        /// <param name="errorMessage">Error message of transaction</param>
+        /// <param name="statusCode">Status code for transaction</param>
         public void SetError(string errorMessage, HttpStatusCode statusCode)
         {
             this.Success = false;
