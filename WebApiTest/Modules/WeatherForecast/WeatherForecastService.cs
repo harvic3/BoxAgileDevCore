@@ -6,6 +6,7 @@ using WebApiTest.Services.CommandServices;
 using WebApiTest.Services.QueryServices;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using WebApiTest.Domain;
 
 namespace WebApiTest.Modules.WeatherForecast
 {
@@ -22,7 +23,7 @@ namespace WebApiTest.Modules.WeatherForecast
 
         public async Task<IBaseResult> GetWeatherForecast()
         {
-            Result<IEnumerable<Domain.Weather>> result = new Result<IEnumerable<Domain.Weather>>();
+            Result<IEnumerable<Weather>> result = new Result<IEnumerable<Weather>>();
 
             var data = await this.weatherQueryService.GetAll();
             result.Successful(data);
@@ -30,11 +31,11 @@ namespace WebApiTest.Modules.WeatherForecast
             return await Task.FromResult(result);
         }
 
-        public async Task<IBaseResult> AddWeatherForeCast(Domain.Weather weather)
+        public async Task<IBaseResult> AddWeatherForeCast(Weather weather)
         {
-            Result<Domain.Weather> result = new Result<Domain.Weather>();
+            Result<Domain.Weather> result = new Result<Weather>();
 
-            result.Successful(this.weatherCommandService.Add())
+            result.Successful(await this.weatherCommandService.Add(weather));
 
             return result;
         }

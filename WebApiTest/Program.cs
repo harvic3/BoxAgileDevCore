@@ -16,18 +16,6 @@ namespace WebApiTest
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
-        //Host.CreateDefaultBuilder(args)
-        //    .ConfigureWebHostDefaults(webBuilder =>
-        //    {
-        //        webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
-        //        {
-        //            var env = hostingContext.HostingEnvironment;
-        //            env.ContentRootPath = Directory.GetCurrentDirectory();
-        //            env.EnvironmentName = "Development";
-        //        });
-
-        //        webBuilder.UseStartup<Startup>();
-        //    });
+                });        
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using WebApiTest.Modules.WeatherForecast;
 
-namespace WebApiTest.Modules.Weather
+namespace WebApiTest.Modules.WeatherForecast
 {
     [ApiController]
     [Route("api/[controller]")]
