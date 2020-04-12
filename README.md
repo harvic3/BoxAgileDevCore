@@ -63,7 +63,7 @@ namespace WebApiTest.Modules.WeatherForecast
     }
 }
 
-// This is a Businnes Service
+// This is a Business Service
 
 using BoxAgileDevCore.Result;
 using System.Threading.Tasks;
