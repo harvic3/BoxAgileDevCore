@@ -1,4 +1,4 @@
-﻿using BoxAgileDev.Result;
+﻿using BoxAgileDevCore.Result;
 using System.Threading.Tasks;
 using WebApiTest.Domain;
 
@@ -8,6 +8,6 @@ namespace WebApiTest.Modules.WeatherForecast
     {
         Task<IBaseResult> GetWeatherForecast();
 
-        Task<IBaseResult> AddWeatherForeCast(Domain.Weather weather);
+        Task<IBaseResult> AddWeatherForeCast(Weather weather);
     }
 }

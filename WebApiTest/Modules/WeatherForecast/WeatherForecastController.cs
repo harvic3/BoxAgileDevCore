@@ -1,7 +1,6 @@
-﻿using BoxAgileDev.Controller;
+﻿using BoxAgileDevCore.Controller;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using WebApiTest.Modules.WeatherForecast;
 
 namespace WebApiTest.Modules.WeatherForecast
 {

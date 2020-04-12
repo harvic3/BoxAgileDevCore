@@ -1,74 +1,137 @@
 ﻿# Box Agile Dev Core (BAD)
 
-> BADCore is a toolbox for the agile development of .Net Core Web Api projects under the guide of a workflow.
+> BADCore is a `ToolBox` for the agile development of Net Core Web Api projects under the guide of a `WorkFlow`.
 
 
 ## Environment
 
-> This library was made in C# .Net Standard 2.0.
+> This library was made for Net Core platform.
 
 ## Installation
 
-- Go to management Nuget Package in your project and searh BAD and install the last versión of `Vickodev.Utility.BADCore`.
-- Ok, once installed, go to any Class in the project and declare the library for use it, using BoxAgileDev; and ready.
+- Go to management Nuget Package in your project and searh BADCore and install the last versión of `Vickodev.Utility.BADCore`.
+- Ok, once installed, go to any Class in the project and declare the library for use it, `using BoxAgileDevCore;` and ready.
 
 ## Tools in package
 
-> `Result`: is a tool for Flow Process Control and set the response data of your application.
+> `BaseResult`: is a class for flow business control and set the response data for request of your application.
 
-> `CommonResponse`: is a class for management the response througt HandlerResponse method into Controller.
+> `CommonResponse`: is a class for management the response througt IActionResult of request into Controller method.
 
-> `SimpleMapper`: is a simple tool for mapping object models with data models.
+> `SimpleMapper`: is a simple tool for mapping object models with data models (Simple obects or colections, not work for mixtures for the moment).
 
-> `ControllerManager`: is a class based in ControllerBase for  for management the Api Controllers and Map Json objects in Object models (PostUtility) into your application.
+> `ControllerManager`: is a class based in ControllerBase for  for management the ControllerBase and deserialize/serialize Json objects in object models (JsonUtil) into your application and get a method (HanlderResponse) for manage the result for current request.
 
-> `JsonUtil`: is a Class into HttpResponseManager with which you can map objects in Json format to object models.
+> `JsonUtil`: is a class into ControllerManager with which you can deserialize/serialize objects in Json format to object models and viceversa.
 
-> `CustomHttpCient`: is a class for manage a single instance of HttpClient class for manage your request.
+> `CustomHttpCient`: is a class for manage a single instance of HttpClient class for manage your request through the Net Core `IHttpClientFactory` interface.
+The advantages offered by this implementation is the optimal management of the HTTP connections avoiding the collapse of the system connection ports and injecting the headers in the HttpRequest messages and not in the client.
 
 
-## Example (it's in process)
+## Example 
+
+The following is a cursory look at the usage of the package, however for more details you can review the testing `Net Core API` at the following link:
+
+- <a href="https://github.com/harvic3/BoxAgileDevCore/tree/master/WebApiTest" target="_blank" >Go to WebApiTest</a>
+
 
 ```c#
-using BoxAgileDev;
+// This is a Controller
 
-namespace WebApiTest.Controllers
+using BoxAgileDevCore.Controller;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+
+namespace WebApiTest.Modules.WeatherForecast
 {
-    public class UserController : ApiManager<UserContract>
-    {        
-        public HttpResponseMessage Get(string email)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class WeatherForecastController : ControllerManager<IWeatherForecastService>
+    {
+        public WeatherForecastController(IWeatherForecastService weatherForecastService)
+            :base(weatherForecastService)
         {
-            Result result = Instance.Get(email);
-            return HandleResult(result, Request);
         }
 
-        public HttpResponseMessage Get()
+        [HttpGet]
+        public async Task<IActionResult> GetWeather()
         {
-            Result result = Instance.Get();
-            return HandleResult(result, Request);
+            var result = await Instance.GetWeatherForecast();
+
+            return this.HandlerResponse(result);
+        }
+    }
+}
+
+// This is a Businnes Service
+
+using BoxAgileDevCore.Result;
+using System.Threading.Tasks;
+using BoxAgileDevCore.Result.Generic;
+using System.Collections.Generic;
+using WebApiTest.Services.CommandServices;
+using WebApiTest.Services.QueryServices;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using WebApiTest.Domain;
+
+namespace WebApiTest.Modules.WeatherForecast
+{
+    public class WeatherForecastService : IWeatherForecastService
+    {
+        private readonly IWeatherCommandService weatherCommandService;
+        private readonly IWeatherQueryService weatherQueryService;
+
+        public WeatherForecastService(IServiceProvider serviceProvider)
+        {
+            this.weatherCommandService = serviceProvider.GetService<IWeatherCommandService>();
+            this.weatherQueryService = serviceProvider.GetService<IWeatherQueryService>();
+        }               
+
+        public async Task<IBaseResult> GetWeatherForecast()
+        {
+            BaseResult<IEnumerable<Weather>> result = new BaseResult<IEnumerable<Weather>>();
+
+            var data = await this.weatherQueryService.GetAll();
+            result.SetSuccess(data);
+
+            return await Task.FromResult(result);
         }
 
-        public HttpResponseMessage Post(dynamic userObject)
+        public async Task<IBaseResult> AddWeatherForeCast(Weather weather)
         {
-            UserModel newUser = PostUtility.Get<UserModel>(userObject.user);
-            Result result = Instance.Create(newUser);
-            return HandleResult(result, Request);
+            BaseResult<Domain.Weather> result = new BaseResult<Weather>();
+
+            result.SetSuccess(await this.weatherCommandService.Add(weather));
+
+            return result;
         }
 
-        public HttpResponseMessage Delete(dynamic userObject)
+    }
+}
+
+// This is a query service
+
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using WebApiTest.Data.Interfaces;
+using WebApiTest.Domain;
+
+namespace WebApiTest.Services.QueryServices
+{
+    public class WeatherQueryService : IWeatherQueryService
+    {
+        private readonly IWeatherRepository weatherRepository;
+
+        public WeatherQueryService(IWeatherRepository weatherRepository)
         {
-            UserModel userDel = PostUtility.Get<UserModel>(userObject.user);
-            Result result = Instance.Delete(userDel);
-            return HandleResult(result, Request);
+            this.weatherRepository = weatherRepository;
         }
 
-        public HttpResponseMessage Put(dynamic userObject)
+        public async Task<IEnumerable<Weather>> GetAll()
         {
-            UserModel userUpd = PostUtility.Get<UserModel>(userObject.user);
-            Result result = Instance.Update(userUpd);
-            return HandleResult(result, Request);
+            return await this.weatherRepository.GetAll();
         }
-
     }
 }
 ```

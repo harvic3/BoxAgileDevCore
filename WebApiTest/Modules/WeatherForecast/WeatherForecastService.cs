@@ -1,6 +1,6 @@
-﻿using BoxAgileDev.Result;
+﻿using BoxAgileDevCore.Result;
 using System.Threading.Tasks;
-using BoxAgileDev.Result.Generic;
+using BoxAgileDevCore.Result.Generic;
 using System.Collections.Generic;
 using WebApiTest.Services.CommandServices;
 using WebApiTest.Services.QueryServices;
@@ -23,19 +23,19 @@ namespace WebApiTest.Modules.WeatherForecast
 
         public async Task<IBaseResult> GetWeatherForecast()
         {
-            Result<IEnumerable<Weather>> result = new Result<IEnumerable<Weather>>();
+            BaseResult<IEnumerable<Weather>> result = new BaseResult<IEnumerable<Weather>>();
 
             var data = await this.weatherQueryService.GetAll();
-            result.Successful(data);
+            result.SetSuccess(data);
 
             return await Task.FromResult(result);
         }
 
         public async Task<IBaseResult> AddWeatherForeCast(Weather weather)
         {
-            Result<Domain.Weather> result = new Result<Weather>();
+            BaseResult<Domain.Weather> result = new BaseResult<Weather>();
 
-            result.Successful(await this.weatherCommandService.Add(weather));
+            result.SetSuccess(await this.weatherCommandService.Add(weather));
 
             return result;
         }

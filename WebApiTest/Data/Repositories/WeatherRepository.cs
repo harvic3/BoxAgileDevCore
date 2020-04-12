@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using WebApiTest.Data.Interfaces;
 using WebApiTest.Data.DataModels;
 using WebApiTest.Domain;
-using BoxAgileDev.Mapping;
+using BoxAgileDevCore.Mapping;
 
 namespace WebApiTest.Data.Repositories
 {

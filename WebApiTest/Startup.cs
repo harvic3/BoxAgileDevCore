@@ -23,15 +23,19 @@ namespace WebApiTest
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient();
+
             services.AddTransient<IWeatherForecastService, WeatherForecastService>();
             services.AddTransient<IWeatherCommandService, WeatherCommandService>();
             services.AddTransient<IWeatherQueryService, WeatherQueryService>();
             services.AddTransient<IWeatherRepository, WeatherRepository>();
 
             /*
-              This is important for map the DataMember names into Dto.
-              You can add Nuget Microsoft.AspNetCore.Mvc.NewtonsoftJson and 
-              add extension mehod AddNewtonsoftJson();
+             * Observation:
+                  This is important for map the DataMember names into Dto.
+                  You can add Nuget Microsoft.AspNetCore.Mvc.NewtonsoftJson and 
+                  add extension mehod AddNewtonsoftJson();
+             * If you are NOT going to use DataMember attributes you can omit this setting. 
             */
             services.AddControllers()
                     .AddNewtonsoftJson();
