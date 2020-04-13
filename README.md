@@ -2,6 +2,8 @@
 
 > BADCore is a `ToolBox` for the agile development of Net Core Web Api projects under the guide of a `WorkFlow`.
 
+You can find the package on the nuget site by following the link:
+- <a href="https://www.nuget.org/packages/Vickodev.Utility.BADCore/" target="_blank" >Go to Nuget org</a>
 
 ## Environment
 
