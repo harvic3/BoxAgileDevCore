@@ -18,16 +18,16 @@ You can find the package on the nuget site by following the link:
 
 > `BaseResult`: is a class for flow business control and set the response data for request of your application.
 
-> `CommonResponse`: is a class for management the response througt IActionResult of request into Controller method.
+> `CommonResponse`: is a class for management the response througt `IActionResult` interface of each request into called Controller method.
 
-> `SimpleMapper`: is a simple tool for mapping object models with data models (Simple obects or colections, not work for mixtures for the moment).
+> `SimpleMapper`: is a simple tool for mapping object models with data models (Simple objects or collections, not work for mixtures for the moment).
 
-> `ControllerManager`: is a class based in ControllerBase for  for management the ControllerBase and deserialize/serialize Json objects in object models (JsonUtil) into your application and get a method (HanlderResponse) for manage the result for current request.
+> `ControllerManager`: is a class based in `ControllerBase` class for  for management the Controller methods and deserialize/serialize Json objects in object models (JsonUtil) into your application and get a method (HanlderResponse) for manage the result for current request.
 
-> `JsonUtil`: is a class into ControllerManager with which you can deserialize/serialize objects in Json format to object models and viceversa.
+> `JsonUtil`: is a tool class into `ControllerManager` with which you can deserialize/serialize objects in Json format to object models and viceversa.
 
-> `CustomHttpCient`: is a class for manage a single instance of HttpClient class for manage your request through the Net Core `IHttpClientFactory` interface.
-The advantages offered by this implementation is the optimal management of the HTTP connections avoiding the collapse of the system connection ports and injecting the headers in the HttpRequest messages and not in the client.
+> `CustomHttpClient`: is a class for manage a single instance of `HttpClient` class for manage your request through the Net Core `IHttpClientFactory` interface.
+The advantages offered by this implementation is the optimal management of the HTTP requests avoiding the collapse of the system connection ports and injecting the headers in the HttpRequest messages and not in the client.
 
 
 ## Example 
@@ -138,5 +138,24 @@ namespace WebApiTest.Services.QueryServices
 }
 ```
 
-## Usage
+## Important usage details
+
+- Install the `BADCore` Package in your NetCore  API Project.
+
+- If you use a classes with `DataContract` attribute you must do the following:
+
+> Install the nuget Package `Microsoft.AspNetCore.Mvc.NewtonsoftJson` and use the extension method `.AddNewtonsoftJson()` in your Startup class as following:
+```c#
+public void ConfigureServices(IServiceCollection services)
+{
+    /*
+        *
+        your other settings
+
+    */
+
+    services.AddControllers()
+            .AddNewtonsoftJson(); //This extension method is neccesary for map the DataMember in your DataContract classes.
+}
+```
 
