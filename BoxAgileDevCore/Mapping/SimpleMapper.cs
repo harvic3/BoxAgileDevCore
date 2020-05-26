@@ -49,7 +49,7 @@ namespace BoxAgileDevCore.Mapping
                     else
                     {
                         var originInt = value.GetValue(origin, null);
-                        prop.SetValue(destination, Map(originInt, Activator.CreateInstance(originInt.GetType())));
+                        prop.SetValue(destination, Map(originInt, Activator.CreateInstance(prop.PropertyType)));
                     }
                 }
             }
