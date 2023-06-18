@@ -1,7 +1,6 @@
 ﻿using BoxAgileDevCore.Mapping;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using static BoxAgileDevUnitTests.TestClasses.TestClasses;

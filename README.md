@@ -1,4 +1,4 @@
-﻿# Box Agile Dev Core (BAD)
+﻿# Box Agile Dev Core (BADCore)
 
 > BADCore is a `ToolBox` for the agile development of Net Core Web Api projects under the guide of a `WorkFlow`.
 

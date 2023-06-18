@@ -24,11 +24,11 @@ namespace BoxAgileDevCore.Controller.Response
         /// <summary>
         /// Action for build a response
         /// </summary>
-        /// <param name="context">ActionCOntext for controller</param>
+        /// <param name="context">ActionContext for controller</param>
         /// <returns></returns>
         public Task ExecuteResultAsync(ActionContext context)
         {
-            var response = new ObjectResult(this.result)
+            var response = new ObjectResult( this.result)
             {
                 StatusCode = Convert.ToInt32(this.result.StatusCode),
             };
