@@ -1,5 +1,5 @@
-﻿using System.Net;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
+using System.Net;
 
 namespace BoxAgileDevCore.Result.Generic
 {
@@ -46,17 +46,17 @@ namespace BoxAgileDevCore.Result.Generic
         }
 
         /// <summary>
-        /// Method for set a succesful transaction
+        /// Method for set data and message as a succesful transaction
         /// </summary>
         /// <param name="data">Result data for transaction</param>
         /// <param name="message">Message for transaction</param>
         /// <param name="statusCode">StatusCode of transaction</param>
         public void SetSuccess(T data, string message, HttpStatusCode statusCode = HttpStatusCode.OK)
         {
-            this.SetSuccess();
             this.Result = data;
             this.AddMessage(message);
             this.SetStatusCode(statusCode);
+            this.SetSuccess();
         }
     }
 }

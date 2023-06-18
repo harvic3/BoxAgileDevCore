@@ -13,11 +13,19 @@ namespace BoxAgileDevCore.Result
 
         void SetStatusCode(HttpStatusCode statusCode);
 
+        void SetMessage(string message, HttpStatusCode statusCode );
+
         void AddMessage(string message);
 
         void SetSuccess();
 
         void SetError(string message, HttpStatusCode statusCode);
+
+        void AddError( string message);
+
+        bool HasErrors();
+
+        bool HasMessages();
     }
 
 }

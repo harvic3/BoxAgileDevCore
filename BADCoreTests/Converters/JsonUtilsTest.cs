@@ -20,7 +20,7 @@ namespace BoxAgileDevUnitTests.Converters
         public void DynamicMappingToPersonWithDataMemberObjectTest()
         {
             // Arrange
-            dynamic person = "{\r\n  \"name\": \"Jhon\",\r\n  \"lastName\": \"Doe\"\r\n}";             
+            dynamic person = "{\r\n  \"name\": \"Jhon\",\r\n  \"lastName\": \"Doe\"\r\n}";
 
             // Act
             PersonDto personMapped = utils.DeserializeObject<PersonDto>(person);

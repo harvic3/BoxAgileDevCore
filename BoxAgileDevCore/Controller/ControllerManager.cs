@@ -32,7 +32,7 @@ namespace BoxAgileDevCore.Controller
         {
             get
             {
-                apiUtils = apiUtils ?? new JsonUtils();
+                apiUtils ??= new JsonUtils();
                 return apiUtils;
             }
         }
@@ -46,7 +46,6 @@ namespace BoxAgileDevCore.Controller
         {
             return new CommonResponse(result);
         }
-
-    }
+  }
 
 }
