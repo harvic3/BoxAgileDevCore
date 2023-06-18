@@ -4,7 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<Authors>vickodev, @harvic3</Authors>
 		<Company>Vickodev</Company>
-		<Description>Toolbox and WorkFlow for the agile development of .Net Web Api projects.</Description>
+		<Description>Toolbox and WorkFlow for the agile development of .Net Web App and Api projects.</Description>
 		<Copyright>https://opensource.org/licenses/MIT</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/harvic3/BoxAgileDevCore</PackageProjectUrl>
@@ -20,6 +20,8 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<AssemblyVersion>2.0.0.0</AssemblyVersion>
 		<NeutralLanguage>en</NeutralLanguage>
+		<FileVersion>2.0.0.0</FileVersion>
+		<Version>2.0.0</Version>
 	</PropertyGroup>
 
 	<ItemGroup>

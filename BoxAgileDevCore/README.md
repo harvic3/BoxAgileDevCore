@@ -25,4 +25,3 @@ For a workflow we design the following tools that will help you control the inpu
 
 > `CustomHttpClient`: is a class for manage a single instance of `HttpClient` class for manage your request through the Net Core `IHttpClientFactory` interface.
 The advantages offered by this implementation is the optimal management of the HTTP requests avoiding the collapse of the system connection ports and injecting the headers in the HttpRequest messages and not in the client.
-
