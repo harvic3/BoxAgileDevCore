@@ -5,18 +5,18 @@ using WebApiTest.Domain;
 
 namespace WebApiTest.Services.QueryServices
 {
-    public class WeatherQueryService : IWeatherQueryService
+  public class WeatherQueryService : IWeatherQueryService
+  {
+    private readonly IWeatherRepository weatherRepository;
+
+    public WeatherQueryService( IWeatherRepository weatherRepository )
     {
-        private readonly IWeatherRepository weatherRepository;
-
-        public WeatherQueryService(IWeatherRepository weatherRepository)
-        {
-            this.weatherRepository = weatherRepository;
-        }
-
-        public async Task<IEnumerable<Weather>> GetAll()
-        {
-            return await this.weatherRepository.GetAll();
-        }
+      this.weatherRepository = weatherRepository;
     }
+
+    public async Task<IEnumerable<Weather>> GetAll()
+    {
+      return await this.weatherRepository.GetAll();
+    }
+  }
 }

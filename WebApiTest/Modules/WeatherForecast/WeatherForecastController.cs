@@ -4,21 +4,21 @@ using System.Threading.Tasks;
 
 namespace WebApiTest.Modules.WeatherForecast
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class WeatherForecastController : ControllerManager<IWeatherForecastService>
+  [ApiController]
+  [Route( "api/[controller]" )]
+  public class WeatherForecastController : ControllerManager<IWeatherForecastService>
+  {
+    public WeatherForecastController( IWeatherForecastService weatherForecastService )
+        : base( weatherForecastService )
     {
-        public WeatherForecastController(IWeatherForecastService weatherForecastService)
-            :base(weatherForecastService)
-        {
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> GetWeather()
-        {
-            var result = await Instance.GetWeatherForecast();
-
-            return this.HandlerResponse(result);
-        }
     }
+
+    [HttpGet]
+    public async Task<IActionResult> GetWeather()
+    {
+      var result = await Instance.GetWeatherForecast();
+
+      return this.HandlerResponse( result );
+    }
+  }
 }

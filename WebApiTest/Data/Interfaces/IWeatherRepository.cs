@@ -4,10 +4,10 @@ using WebApiTest.Domain;
 
 namespace WebApiTest.Data.Interfaces
 {
-    public interface IWeatherRepository
-    {
-        Task<IEnumerable<Weather>> GetAll();
+  public interface IWeatherRepository
+  {
+    Task<IEnumerable<Weather>> GetAll();
 
-        Task<Weather> Add(Weather weather);
-    }
+    Task<Weather> Add( Weather weather );
+  }
 }

@@ -10,35 +10,33 @@ using WebApiTest.Domain;
 
 namespace WebApiTest.Modules.WeatherForecast
 {
-    public class WeatherForecastService : IWeatherForecastService
+  public class WeatherForecastService : IWeatherForecastService
+  {
+    private readonly IServiceProvider serviceProvider;
+
+    public WeatherForecastService( IServiceProvider serviceProvider )
     {
-        private readonly IWeatherCommandService weatherCommandService;
-        private readonly IWeatherQueryService weatherQueryService;
-
-        public WeatherForecastService(IServiceProvider serviceProvider)
-        {
-            this.weatherCommandService = serviceProvider.GetService<IWeatherCommandService>();
-            this.weatherQueryService = serviceProvider.GetService<IWeatherQueryService>();
-        }               
-
-        public async Task<IBaseResult> GetWeatherForecast()
-        {
-            BaseResult<IEnumerable<Weather>> result = new BaseResult<IEnumerable<Weather>>();
-
-            var data = await this.weatherQueryService.GetAll();
-            result.SetSuccess(data);
-
-            return await Task.FromResult(result);
-        }
-
-        public async Task<IBaseResult> AddWeatherForeCast(Weather weather)
-        {
-            BaseResult<Domain.Weather> result = new BaseResult<Weather>();
-
-            result.SetSuccess(await this.weatherCommandService.Add(weather));
-
-            return result;
-        }
-
+      this.serviceProvider = serviceProvider;
     }
+
+    public async Task<IBaseResult> GetWeatherForecast()
+    {
+      BaseResult<IEnumerable<Weather>> result = new();
+
+      var data = await serviceProvider.GetService<IWeatherQueryService>().GetAll();
+      result.SetSuccess( data );
+
+      return await Task.FromResult( result );
+    }
+
+    public async Task<IBaseResult> AddWeatherForeCast( Weather weather )
+    {
+      BaseResult<Weather> result = new();
+
+      result.SetSuccess( await serviceProvider.GetService<IWeatherCommandService>().Add( weather ) );
+
+      return result;
+    }
+
+  }
 }

@@ -3,8 +3,8 @@ using WebApiTest.Domain;
 
 namespace WebApiTest.Services.CommandServices
 {
-    public interface IWeatherCommandService
-    {
-        Task<Weather> Add(Weather weather);
-    }
+  public interface IWeatherCommandService
+  {
+    Task<Weather> Add( Weather weather );
+  }
 }

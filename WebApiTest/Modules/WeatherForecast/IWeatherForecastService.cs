@@ -4,10 +4,10 @@ using WebApiTest.Domain;
 
 namespace WebApiTest.Modules.WeatherForecast
 {
-    public interface IWeatherForecastService
-    {
-        Task<IBaseResult> GetWeatherForecast();
+  public interface IWeatherForecastService
+  {
+    Task<IBaseResult> GetWeatherForecast();
 
-        Task<IBaseResult> AddWeatherForeCast(Weather weather);
-    }
+    Task<IBaseResult> AddWeatherForeCast( Weather weather );
+  }
 }
