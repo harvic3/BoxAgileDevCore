@@ -1,13 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29728.190
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiTest", "WebApiTest\WebApiTest.csproj", "{B2AFFB7F-D77A-45D8-925D-6A57E3AB9F5E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoxAgileDevCore", "BoxAgileDevCore\BoxAgileDevCore.csproj", "{4ED8576A-AA46-4651-963A-E05648BD9BF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BADCoreTests", "BADCoreTests\BADCoreTests.csproj", "{B0A871E7-3B2B-4D05-89EC-B29ACB66CFFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BADCoreTests", "BADCoreTests\BADCoreTests.csproj", "{B0A871E7-3B2B-4D05-89EC-B29ACB66CFFE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoxAgileDevCore.Application", "Application\BoxAgileDevCore.Application\BoxAgileDevCore.Application.csproj", "{97CB8FFD-5AF4-407B-9490-A58C86498AB0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoxAgileDevCore.Adapters", "Adapters\BoxAgileDevCore.Adapters\BoxAgileDevCore.Adapters.csproj", "{30DA029D-9EB6-4089-84A4-835F8B0F58E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxAgileDevCore.Infrastructure", "Infrastructure\BoxAgileDevCore.Infrastructure\BoxAgileDevCore.Infrastructure.csproj", "{57053A62-6163-492A-B08A-192803992A72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +33,18 @@ Global
 		{B0A871E7-3B2B-4D05-89EC-B29ACB66CFFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0A871E7-3B2B-4D05-89EC-B29ACB66CFFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0A871E7-3B2B-4D05-89EC-B29ACB66CFFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97CB8FFD-5AF4-407B-9490-A58C86498AB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97CB8FFD-5AF4-407B-9490-A58C86498AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97CB8FFD-5AF4-407B-9490-A58C86498AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97CB8FFD-5AF4-407B-9490-A58C86498AB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30DA029D-9EB6-4089-84A4-835F8B0F58E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30DA029D-9EB6-4089-84A4-835F8B0F58E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30DA029D-9EB6-4089-84A4-835F8B0F58E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30DA029D-9EB6-4089-84A4-835F8B0F58E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57053A62-6163-492A-B08A-192803992A72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57053A62-6163-492A-B08A-192803992A72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57053A62-6163-492A-B08A-192803992A72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57053A62-6163-492A-B08A-192803992A72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

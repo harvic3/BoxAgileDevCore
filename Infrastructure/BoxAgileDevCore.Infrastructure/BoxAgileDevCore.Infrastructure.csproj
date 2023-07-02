@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<Nullable>enable</Nullable>
+		<Authors>vickodev, @harvic3</Authors>
+		<Company>Vickodev</Company>
+		<Description>Infrastructure layer tools workflow for the agile development of .Net Web App and Api clean architecture projects.</Description>
+		<Copyright>https://opensource.org/licenses/MIT</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/harvic3/BoxAgileDevCore</PackageProjectUrl>
+		<PackageIcon>badCore.png</PackageIcon>
+		<RepositoryUrl>https://github.com/harvic3/BoxAgileDevCore/tree/master/BoxAgileDevCore</RepositoryUrl>
+		<RepositoryType>GIT</RepositoryType>
+		<PackageTags>WebApi, HttpClient, Api, Utility, Agile, Json, Map, Mapper, Generics, BackEnd, Dot Net Core, Clean architecture, Infrastructure layer</PackageTags>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageReleaseNotes>Separating layers</PackageReleaseNotes>
+		<PackageId>Vickodev.Utility.BADCore.Infrastructure</PackageId>
+		<Title>BADCore.Infrastructure</Title>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+		<NeutralLanguage>en</NeutralLanguage>
+		<FileVersion>1.0.0.0</FileVersion>
+		<Version>1.0.0</Version>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Update="README.md">
+			<PackagePath>\</PackagePath>
+			<Pack>True</Pack>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="badCore.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
+</Project>
