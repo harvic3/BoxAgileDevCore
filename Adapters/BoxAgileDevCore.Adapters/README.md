@@ -10,10 +10,10 @@ Worry about your business rules and trivial, repetitive things and handle them w
 
 For a workflow we design the following tools that will help you control the input and output of your use cases.
 
-> `HttpSatusMapping`: is a class that contains de correspondig HttpStatusCode of an AplicationStatusCode.
+> `HttpSatusMapping`: is a class to manage application status and it contains de correspondig HttpStatusCode for an AplicationStatusCode.
 
-> `ControllerExtension`: is a class for management the response througt `IActionResult` interface or througt a simple BaseResult.
+> `ControllerExtension`: is a class to manage the response througt `IActionResult` interface or througt a simple BaseResult.
 
-> `ProducesResponseTypeAttributeApplication`: is a simple Attributte controller for help us to mapping ApplicationStatusCode to HttpStatusCode.
+> `ProducesApplicationResponseTypeAttribute`: is a simple Attributte controller to help us to mapping ApplicationStatusCode to HttpStatusCode.
 
-> `JsonUtil`: is a tool class into `ControllerManager` with which you can deserialize/serialize objects in Json format to object models and viceversa.
+> `JsonUtil`: is a tool class with which you can deserialize/serialize objects in Json format to object models and viceversa.

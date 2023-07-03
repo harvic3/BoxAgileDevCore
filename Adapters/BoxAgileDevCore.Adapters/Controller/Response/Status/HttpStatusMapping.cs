@@ -9,6 +9,17 @@ namespace BoxAgileDevCore.Adapters.Controller.Response.Status
 
     private static readonly IDictionary<string, HttpStatusCode> HttpStatusDictionary = new Dictionary<string, HttpStatusCode>();
 
+    public static void SetOrphanStatusCodes( IDictionary<string, HttpStatusCode> values )
+    {
+      foreach ( var value in values )
+      {
+        if ( !HttpStatusDictionary.ContainsKey( value.Key ) )
+        {
+          HttpStatusDictionary.Add( value.Key, value.Value );
+        }
+      }
+    }
+
     public static void AddHttpStatusMapping( string applicationStatusCode, HttpStatusCode httpStatusCode )
     {
       if ( !HttpStatusDictionary.ContainsKey( applicationStatusCode ) )

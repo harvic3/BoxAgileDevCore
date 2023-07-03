@@ -1,5 +1,6 @@
 ﻿using BoxAgileDevCore.Adapters.Controller.Response.Status;
 using BoxAgileDevCore.Application.Result;
+using BoxAgileDevCore.Application.Trace;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -7,6 +8,21 @@ namespace BoxAgileDevCore.Adapters.Controller.Extensions
 {
   public static class ControllerExtension
   {
+    private static void SetStatusCode( this ControllerBase controller, string statusCode )
+    {
+      controller.HttpContext.Response.StatusCode = HttpStatusMapping.GetHttpCode( statusCode );
+    }
+
+    /// <summary>
+    /// Method for get a trace from HttpContext
+    /// </summary>
+    /// <param name="controller"></param>
+    /// <returns></returns>
+    public static IUseCaseTrace? GetUseCaseTrace( this ControllerBase controller )
+    {
+      return controller.HttpContext.Items["UseCaseTrace"] as IUseCaseTrace;
+    }
+
     /// <summary>
     /// Method for handle a result as an IActionResult
     /// </summary>
@@ -37,7 +53,7 @@ namespace BoxAgileDevCore.Adapters.Controller.Extensions
       {
         throw new ArgumentNullException( nameof( controller ) );
       }
-      controller.HttpContext.Response.StatusCode = HttpStatusMapping.GetHttpCode( result.StatusCode.ToString() );
+      ControllerExtension.SetStatusCode( controller, result.StatusCode );
 
       return result;
     }
