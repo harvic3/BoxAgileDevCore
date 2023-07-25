@@ -19,16 +19,16 @@
 		<PackageId>Vickodev.Utility.BADCore.Application</PackageId>
 		<Title>BADCore.Application</Title>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<AssemblyVersion>1.0.0.2</AssemblyVersion>
+		<AssemblyVersion>1.0.0.3</AssemblyVersion>
 		<NeutralLanguage>en</NeutralLanguage>
-		<FileVersion>1.0.0.2</FileVersion>
-		<Version>1.0.2</Version>
+		<FileVersion>1.0.0.3</FileVersion>
+		<Version>1.0.3</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="UseCase\**" />
-	  <EmbeddedResource Remove="UseCase\**" />
-	  <None Remove="UseCase\**" />
+		<Compile Remove="UseCase\**" />
+		<EmbeddedResource Remove="UseCase\**" />
+		<None Remove="UseCase\**" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -20,7 +20,7 @@ namespace BoxAgileDevCore.Application.Trace
     void AddMetadata( string key, object value );
     void SetStatusCode( string statusCode );
     void SetPayload( object payload );
-    void SetQueryParam( IDictionary<string, string> value );
+    void SetQueryParams( IDictionary<string, string> value );
     void AddQueryParam( string key, string queryValue );
     void SetParameters( IDictionary<string, string> parameters );
     void AddParameter( string key, string value );

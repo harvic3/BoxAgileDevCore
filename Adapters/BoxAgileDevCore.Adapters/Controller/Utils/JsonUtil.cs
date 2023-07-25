@@ -13,20 +13,21 @@ namespace BoxAgileDevCore.Adapters.Controller.Utils
     /// <typeparam name="T">Generic type to return</typeparam>
     /// <param name="data">Object y Json</param>
     /// <returns></returns>
-    public static T DeserializeObject<T>( dynamic data )
+    public static T? DeserializeObject<T>( dynamic data )
     {
-      if ( data != null )
+      if ( data == null )
       {
-        JsonSerializerSettings settings = new JsonSerializerSettings
-        {
-          NullValueHandling = NullValueHandling.Ignore,
-          MissingMemberHandling = MissingMemberHandling.Ignore,
-          Formatting = Formatting.Indented
-        };
-        return JsonConvert.DeserializeObject<T>( data.ToString(), settings );
+        return default;
       }
 
-      return default( T );
+      JsonSerializerSettings settings = new()
+      {
+        NullValueHandling = NullValueHandling.Ignore,
+        MissingMemberHandling = MissingMemberHandling.Ignore,
+        Formatting = Formatting.Indented
+      };
+
+      return JsonConvert.DeserializeObject<T>( data.ToString(), settings );
     }
 
     /// <summary>

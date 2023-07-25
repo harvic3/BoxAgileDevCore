@@ -15,17 +15,19 @@ namespace BoxAgileDevCore.Controller.Utils
     /// <returns></returns>
     public static T DeserializeObject<T>( dynamic data )
     {
-      if ( data != null )
+      if ( data == null )
       {
-        JsonSerializerSettings settings = new JsonSerializerSettings
-        {
-          NullValueHandling = NullValueHandling.Ignore,
-          MissingMemberHandling = MissingMemberHandling.Ignore,
-          Formatting = Formatting.Indented
-        };
-        return JsonConvert.DeserializeObject<T>( data.ToString(), settings );
+        return default;
       }
-      return default( T );
+
+      JsonSerializerSettings settings = new()
+      {
+        NullValueHandling = NullValueHandling.Ignore,
+        MissingMemberHandling = MissingMemberHandling.Ignore,
+        Formatting = Formatting.Indented
+      };
+
+      return JsonConvert.DeserializeObject<T>( data.ToString(), settings );
     }
 
     /// <summary>
