@@ -3,6 +3,6 @@
   public interface IServiceManager<T>
   {
     TService? GetService<TService>();
-    TService GetUseCaseService<TService>() where TService : T;
+    TService? GetUseCaseService<TService>() where TService : T;
   }
 }

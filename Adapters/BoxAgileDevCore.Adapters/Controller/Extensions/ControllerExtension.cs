@@ -3,6 +3,7 @@ using BoxAgileDevCore.Application.Result;
 using BoxAgileDevCore.Application.Trace;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Threading.Tasks;
 
 namespace BoxAgileDevCore.Adapters.Controller.Extensions
 {
@@ -27,32 +28,43 @@ namespace BoxAgileDevCore.Adapters.Controller.Extensions
     /// Method for handle a result as an IActionResult
     /// </summary>
     /// <param name="controller"></param>
-    /// <param name="result"></param>
+    /// <param name="useCaseToExecute"></param>
     /// <returns></returns>
     /// <exception cref="ArgumentNullException"></exception>
-    public static IActionResult HandleActionResult( this ControllerBase controller, IBaseResult result )
+    public static async Task<IActionResult> HandleActionResultAsync<T>( this ControllerBase controller, Task<T>? useCaseToExecute ) where T : IBaseResult
     {
       if ( controller is null )
       {
         throw new ArgumentNullException( nameof( controller ) );
       }
+      if ( useCaseToExecute is null )
+      {
+        throw new ArgumentNullException( nameof( IBaseResult ) );
+      }
 
-      return new ObjectResult( result );
+      return new ObjectResult( await useCaseToExecute );
     }
 
     /// <summary>
     /// Method for handle a result as a BaseResult
     /// </summary>
     /// <param name="controller"></param>
-    /// <param name="result"></param>
+    /// <param name="useCaseToExecute"></param>
     /// <returns></returns>
     /// <exception cref="ArgumentNullException"></exception>
-    public static IBaseResult HandleResult( this ControllerBase controller, IBaseResult result )
+    public static async Task<IBaseResult> HandleResultAsync<T>( this ControllerBase controller, Task<T>? useCaseToExecute ) where T : IBaseResult
     {
       if ( controller is null )
       {
         throw new ArgumentNullException( nameof( controller ) );
       }
+      if ( useCaseToExecute is null )
+      {
+        throw new ArgumentNullException( nameof( IBaseResult ) );
+      }
+
+      var result = await useCaseToExecute;
+
       ControllerExtension.SetStatusCode( controller, result.StatusCode );
 
       return result;
