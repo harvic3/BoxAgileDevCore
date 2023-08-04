@@ -1,8 +1,10 @@
 ﻿using BoxAgileDevCore.Adapters.Controller.Response.Status;
 using BoxAgileDevCore.Application.Result;
+using BoxAgileDevCore.Application.Result.Generic;
 using BoxAgileDevCore.Application.Trace;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BoxAgileDevCore.Adapters.Controller.Extensions
@@ -42,7 +44,38 @@ namespace BoxAgileDevCore.Adapters.Controller.Extensions
         throw new ArgumentNullException( nameof( IBaseResult ) );
       }
 
-      return new ObjectResult( await useCaseToExecute );
+      var result = await useCaseToExecute;
+      controller.SetStatusCode( result.StatusCode );
+
+      return new ObjectResult( result );
+    }
+
+    /// <summary>
+    /// Method for handle a result internal response as an IActionResult
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="Out"></typeparam>
+    /// <param name="controller"></param>
+    /// <param name="useCaseToExecute"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentNullException"></exception>
+    public static async Task<IActionResult> HandleActionResultDtoAsync<T>( this ControllerBase controller, Task<IBaseResult<T?>> useCaseToExecute )
+    {
+      if ( controller == null )
+      {
+        throw new ArgumentNullException( "controller" );
+      }
+
+      if ( useCaseToExecute == null )
+      {
+        throw new ArgumentNullException( "IBaseResult" );
+      }
+
+      var result = await useCaseToExecute;
+      controller.SetStatusCode( result.StatusCode );
+      bool hasData = result.Success && result.Result is not null;
+
+      return new ObjectResult( result.Success && hasData ? result.Result : result.Messages.FirstOrDefault() );
     }
 
     /// <summary>
