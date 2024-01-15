@@ -37,7 +37,7 @@ namespace BoxAgileDevCore.Infrastructure.Http
                                                                                                                          HttpMethod method,
                                                                                                                          HttpContent content,
                                                                                                                          IDictionary<string, string> headers,
-                                                                                                                         JsonSerializerSettings jsonSerializerSettings = null )
+                                                                                                                         JsonSerializerSettings? jsonSerializerSettings = null )
     {
       var reqMessage = new HttpRequestMessage( method, url );
       this.SetHeaders( headers, reqMessage );

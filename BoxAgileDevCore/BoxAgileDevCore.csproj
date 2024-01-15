@@ -18,10 +18,10 @@
 		<PackageId>Vickodev.Utility.BADCore</PackageId>
 		<Title>BADCore</Title>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<AssemblyVersion>2.0.0.2</AssemblyVersion>
+		<AssemblyVersion>2.0.0.3</AssemblyVersion>
 		<NeutralLanguage>en</NeutralLanguage>
-		<FileVersion>2.0.0.2</FileVersion>
-		<Version>2.0.2</Version>
+		<FileVersion>2.0.0.3</FileVersion>
+		<Version>2.0.3</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
