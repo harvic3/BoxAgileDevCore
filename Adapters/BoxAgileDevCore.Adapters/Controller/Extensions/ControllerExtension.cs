@@ -63,12 +63,12 @@ namespace BoxAgileDevCore.Adapters.Controller.Extensions
     {
       if ( controller == null )
       {
-        throw new ArgumentNullException( "controller" );
+        throw new ArgumentNullException( nameof( controller ) );
       }
 
       if ( useCaseToExecute == null )
       {
-        throw new ArgumentNullException( "IBaseResult" );
+        throw new ArgumentNullException( "UseCaseToExecute" );
       }
 
       var result = await useCaseToExecute;
@@ -93,12 +93,12 @@ namespace BoxAgileDevCore.Adapters.Controller.Extensions
       }
       if ( useCaseToExecute is null )
       {
-        throw new ArgumentNullException( nameof( IBaseResult ) );
+        throw new ArgumentNullException( "UseCaseToExecute" );
       }
 
       var result = await useCaseToExecute;
 
-      ControllerExtension.SetStatusCode( controller, result.StatusCode );
+      SetStatusCode( controller, result.StatusCode );
 
       return result;
     }
