@@ -18,10 +18,10 @@
 		<PackageId>Vickodev.Utility.BADCore</PackageId>
 		<Title>BADCore</Title>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<AssemblyVersion>2.0.0.3</AssemblyVersion>
+		<AssemblyVersion>2.0.0.4</AssemblyVersion>
 		<NeutralLanguage>en</NeutralLanguage>
-		<FileVersion>2.0.0.3</FileVersion>
-		<Version>2.0.3</Version>
+		<FileVersion>2.0.0.4</FileVersion>
+		<Version>2.0.4</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -37,7 +37,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 
